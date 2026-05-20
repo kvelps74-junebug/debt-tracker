@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Debt Payoff Tracker</title>
+  <link rel="stylesheet" href="style.css" />
+
+  <link rel="manifest" href="manifest.json" />
+<meta name="theme-color" content="#6c63ff" />
+</head>
+<body>
+  <main class="app">
+    <section class="hero">
+      <h1>Debt Payoff Tracker</h1>
+      <p>Track your debt, log payments, and watch your progress grow.</p>
+    </section>
+
+    <section class="dashboard-card">
+      <h2>Overall Debt Progress</h2>
+
+      <div class="overall-bar">
+        <div id="overallProgressFill" class="overall-fill"></div>
+      </div>
+
+      <div class="dashboard-stats">
+        <p><strong>Total Debt:</strong> <span id="totalDebt">$0.00</span></p>
+        <p><strong>Total Paid:</strong> <span id="totalPaid">$0.00</span></p>
+        <p><strong>Total Remaining:</strong> <span id="totalRemaining">$0.00</span></p>
+      </div>
+      
+      <!-- Hidden element required for JavaScript -->
+      <span id="overallPercent" style="display: none;">0%</span>
+    </section>
+
+    <section class="card">
+      <h2>Add a Debt</h2>
+
+      <label>Debt Name</label>
+      <input id="debtName" type="text" placeholder="Example: Credit Card" />
+
+      <label>Total Debt Amount</label>
+      <input id="debtAmount" type="number" placeholder="Example: 2500" />
+
+      <label>Debt Color</label>
+      <input id="debtColor" type="color" value="#6c63ff" />
+
+      <button onclick="addDebt()">Add Debt</button>
+    </section>
+
+    <section id="debtList" class="debt-list"></section>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+  <script src="script.js"></script>
+
+  <script>
+    if ("serviceWorker" in navigator) {
+      navigator.serviceWorker.register("service-worker.js");
+    }
+  </script>
+</body>
+</html>
